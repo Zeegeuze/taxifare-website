@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 import pandas as pd
-import geopandas as gpd
 import folium
 import os
 
