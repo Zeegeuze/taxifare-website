@@ -27,24 +27,6 @@ if map['last_clicked'] is not None:
     dropoff_latitude = map['last_clicked']['lat']
     dropoff_longitude = map['last_clicked']['lng']
 
-
-
-# data = {
-#     "lat": [float(pickup_latitude), float(dropoff_latitude)],
-#     "lon": [float(pickup_longitude), float(dropoff_longitude)]
-# }
-# df = pd.DataFrame(data)
-# mean_lat = df['lat'].mean()
-# mean_lon = df['lon'].mean()
-# # Création de la carte avec folium
-# m = folium.Map(location=[mean_lat, mean_lon], zoom_start=12)
-# # Ajout des points de départ et d'arrivée
-# folium.Marker([float(pickup_latitude), float(pickup_longitude)], tooltip='Start').add_to(m)
-# folium.Marker([float(dropoff_latitude), float(dropoff_longitude)], tooltip='Stop').add_to(m)
-# # Affichage de la carte dans Streamlit
-# st_folium(m, width=725, height=500)
-
-
 date_time = st.text_input('Date and time', "2013-07-06 17:18:00")
 pickup_longitude = st.text_input("Pickup longitude", "-73.950655")
 pickup_latitude = st.text_input("Pickup latitude", "40.783282")
@@ -92,12 +74,11 @@ data = {
 df = pd.DataFrame(data)
 mean_lat = df['lat'].mean()
 mean_lon = df['lon'].mean()
-# Création de la carte avec folium
 m = folium.Map(location=[mean_lat, mean_lon], zoom_start=12)
-# Ajout des points de départ et d'arrivée
+
 folium.Marker([float(pickup_latitude), float(pickup_longitude)], tooltip='Start').add_to(m)
 folium.Marker([float(dropoff_latitude), float(dropoff_longitude)], tooltip='Stop').add_to(m)
-# Affichage de la carte dans Streamlit
+
 dest_map = st_folium(m, width=725, height=500)
 if dest_map['last_clicked'] is not None:
     st.write(dest_map)
